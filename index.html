@@ -1,1 +1,127 @@
 
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TARİH LAB | Тарихты бірге зерттейміз</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f3f5fa;color:#18233b}
+header{background:#172747;color:white;padding:22px 18px}
+.logo{font-size:27px;font-weight:bold;letter-spacing:2px}
+header p{color:#c8d5ed;margin-bottom:0}
+nav{display:flex;gap:9px;flex-wrap:wrap;background:white;padding:13px}
+button{border:0;border-radius:9px;padding:12px 16px;background:#e9eef8;color:#20345a;font-weight:bold;cursor:pointer}
+button.active,button.primary{background:#244b83;color:white}
+main{max-width:1000px;margin:auto;padding:20px}
+.hero{background:linear-gradient(120deg,#172747,#35649a);color:white;border-radius:18px;padding:28px 22px;margin:15px 0}
+.hero h1{font-size:30px;margin:0 0 12px}
+.hero p{line-height:1.6;color:#e2eafa}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.card{background:white;border-radius:14px;padding:19px;box-shadow:0 3px 14px #15294b12}
+.card h3{margin-top:5px;color:#203e6c}
+.icon{font-size:30px}
+.section{margin:25px 0}
+select,input{padding:12px;border:1px solid #ccd4e2;border-radius:9px;width:100%;margin:7px 0}
+footer{text-align:center;padding:25px;color:#65718a}
+.hidden{display:none}
+.tag{display:inline-block;background:#e8effb;color:#244b83;padding:6px 10px;border-radius:20px;font-size:12px}
+</style>
+</head>
+<body>
+<header>
+ <div class="logo">📚 TARİH LAB</div>
+ <p>Тарихты жаттамаймыз — зерттейміз!</p>
+</header>
+<nav>
+ <button class="active" onclick="showPage('home',this)">Басты бет</button>
+ <button onclick="showPage('subjects',this)">Пәндер</button>
+ <button onclick="showPage('lessons',this)">Сабақтар</button>
+ <button onclick="showPage('tests',this)">Тесттер</button>
+ <button onclick="showPage('cabinet',this)">Жеке кабинет</button>
+</nav>
+<main>
+<section id="home">
+ <div class="hero">
+  <span class="tag">БІЛІМ • ЗЕРТТЕУ • ТАРИХ</span>
+  <h1>Тарих әлеміне қош келдіңіз!</h1>
+  <p>Қазақстан тарихы мен дүниежүзі тарихын интерактивті тапсырмалар, тесттер және тарихи зерттеулер арқылы меңгеріңіз.</p>
+  <button class="primary" onclick="showPage('subjects')">Оқуды бастау →</button>
+ </div>
+ <div class="section">
+  <h2>Біздің мүмкіндіктер</h2>
+  <div class="grid">
+   <div class="card"><div class="icon">🏛️</div><h3>Тарих сабақтары</h3><p>5–11 сыныптарға арналған оқу материалдары.</p></div>
+   <div class="card"><div class="icon">📝</div><h3>Интерактивті тест</h3><p>Біліміңді тексеріп, нәтижені көр.</p></div>
+   <div class="card"><div class="icon">🗺️</div><h3>Тарихи карталар</h3><p>Оқиғалар мен тарихи кезеңдерді зертте.</p></div>
+   <div class="card"><div class="icon">🏆</div><h3>10 балдық бағалау</h3><p>Өз жетістігіңді бақыла.</p></div>
+  </div>
+ </div>
+</section>
+
+<section id="subjects" class="hidden">
+ <h2>📚 Оқу пәндері</h2>
+ <div class="grid">
+  <div class="card"><div class="icon">🇰🇿</div><h3>Қазақстан тарихы</h3><p>Ежелгі дәуірден қазіргі кезеңге дейін.</p><button onclick="showPage('lessons')">Сабақтарды көру</button></div>
+  <div class="card"><div class="icon">🌍</div><h3>Дүниежүзі тарихы</h3><p>Әлем өркениеттері мен тарихи оқиғалар.</p><button onclick="showPage('lessons')">Сабақтарды көру</button></div>
+ </div>
+ <div class="section">
+ <h3>Сыныпты таңдаңыз</h3>
+ <select id="grade"><option>5-сынып</option><option>6-сынып</option><option>7-сынып</option><option>8-сынып</option><option>9-сынып</option><option>10-сынып</option><option>11-сынып</option></select>
+ </div>
+</section>
+
+<section id="lessons" class="hidden">
+ <h2>🎓 Сабақтар</h2>
+ <div class="card">
+ <p>Оқу материалдары осы бөлімге сынып пен оқу бағдарламасына сәйкес енгізіледі.</p>
+ <p><span class="tag">5–11 сынып</span> <span class="tag">Қазақстан және дүниежүзі тарихы</span></p>
+ </div>
+</section>
+
+<section id="tests" class="hidden">
+ <h2>📝 Білімді тексеру</h2>
+ <div class="card">
+ <p>Төмендегі сұрақ — алғашқы үлгі тест.</p>
+ <h3>Қазақстан Республикасының тәуелсіздігі қай жылы жарияланды?</h3>
+ <div id="answers">
+ <p><button onclick="check(false)">1990 жыл</button></p>
+ <p><button onclick="check(true)">1991 жыл</button></p>
+ <p><button onclick="check(false)">1995 жыл</button></p>
+ </div>
+ <h3 id="result"></h3>
+ <p class="tag">Үлгі сұрақ • 1 балл</p>
+ </div>
+</section>
+
+<section id="cabinet" class="hidden">
+ <h2>👤 Жеке кабинет</h2>
+ <div class="card">
+ <p>Платформаға қош келдіңіз!</p>
+ <input id="student" placeholder="Оқушының аты-жөні">
+ <select><option>Оқушы</option><option>Мұғалім</option></select>
+ <button class="primary" onclick="welcome()">Жалғастыру</button>
+ <h3 id="welcome"></h3>
+ <p>Жеке кабинет, мұғалім панелі және әкімші басқаруы келесі кезеңде қосылады.</p>
+ </div>
+</section>
+</main>
+<footer>© 2026 TARİH LAB | Білім — болашаққа бастар жол</footer>
+<script>
+function showPage(id,btn){
+ document.querySelectorAll('main section').forEach(s=>s.classList.add('hidden'));
+ document.getElementById(id).classList.remove('hidden');
+ document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+ if(btn)btn.classList.add('active');
+}
+function check(ok){
+ document.getElementById('result').textContent=ok?'Дұрыс жауап! 🎉':'Қате жауап. Қайта ойланып көріңіз.';
+}
+function welcome(){
+ let name=document.getElementById('student').value.trim();
+ document.getElementById('welcome').textContent=name?'Қош келдіңіз, '+name+'!':'Алдымен аты-жөніңізді енгізіңіз.';
+}
+</script>
+</body>
+</html>
